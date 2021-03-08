@@ -4,7 +4,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "Redirect", value = "/Redirect")
 public class Redirect extends HttpServlet {
@@ -12,16 +11,13 @@ public class Redirect extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         if (name.equals("Honcharenko")) {
-            response.sendRedirect("person1");
+            response.sendRedirect("Honcharenko.html");
         } else if (name.equals("Dmitrieva")) {
-            response.sendRedirect("person3");
+            response.sendRedirect("Dmitrieva.html");
         } else if (name.equals("Chorniy")) {
-            response.sendRedirect("Chorniy.jsp");
+            response.sendRedirect("Chorniy.html");
         }else{
-            PrintWriter out = response.getWriter();
-            out.println("<html><body>");
-            out.println("<h1>" + "Invalid member" + "</h1>");
-            out.println("</body></html>");
+            response.sendError(404);
         }
     }
     @Override
